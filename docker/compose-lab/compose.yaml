@@ -1,0 +1,18 @@
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8085:80"
+    networks:
+      - app-network
+
+  python-app:
+    image: python-devops:v1
+    environment:
+      APP_ENV: production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
